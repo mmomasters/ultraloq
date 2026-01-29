@@ -84,7 +84,7 @@ class UtecClient:
         }
 
         response = await self._post(url, headers, data)
-        if response.get("error"):
+        if response["error"]:
             raise InvalidResponse("Error fetching token.")
 
         self.token = response["data"]["token"]
@@ -102,8 +102,8 @@ class UtecClient:
         data = {"data": json.dumps(auth_data), "token": self.token}
 
         response = await self._post(url, headers, data)
-        if response.get("error"):
-            logger.debug(response.get("error"))
+        if response["error"]:
+            logger.debug(response["error"])
             raise InvalidCredentials("Login/password combination not found.")
 
     async def _get_addresses(self) -> None:

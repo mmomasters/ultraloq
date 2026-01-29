@@ -187,8 +187,8 @@ class UtecClient:
 
         for api_device in self.devices:
             device = UtecBleLock.from_json(api_device)
-            if hasattr(device.capabilities, 'bluetooth') and device.capabilities.bluetooth:
-                devices.append(device)
+            # Return all locks - capability checks done elsewhere
+            devices.append(device)
 
         return devices
 

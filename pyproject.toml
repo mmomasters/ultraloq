@@ -21,6 +21,9 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
+[tool.setuptools.packages.find]
+where = ["."]
+
 [project.urls]
 Homepage = "https://github.com/maeneak/utecio"
 Issues = "https://github.com/maeneak/utecio/issues"

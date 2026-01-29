@@ -3,7 +3,8 @@ import asyncio
 from bleak import BleakScanner
 from bleak.backends.device import BLEDevice
 from utecio.ble.lock import UtecBleLock
-from utecio.api import UtecClient, logger as liblogger
+from utecio.api import UtecClient
+from utecio import logger as liblogger
 
 # Import credentials from config file
 try:
@@ -25,7 +26,7 @@ async def async_bledevice_callback(address: str) -> BLEDevice:
 
 async def check_lock_status(lockname: str):
     # enable debug output
-    liblogger.logger.setLevel(10)
+    liblogger.setLevel(10)
     # connect to webapi and retrieve locks
     client = UtecClient(EMAIL, PASSWORD)
     ble_devices = await client.get_ble_devices()

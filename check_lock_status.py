@@ -2,11 +2,16 @@ import asyncio
 
 from bleak import BleakScanner
 from bleak.backends.device import BLEDevice
-from .ble.lock import UtecBleLock
-from .api import UtecClient, logger as liblogger
+from utecio.ble.lock import UtecBleLock
+from utecio.api import UtecClient, logger as liblogger
 
-EMAIL = "your@email.com"  # Your Utec app username/email
-PASSWORD = "your_password"  # Your Utec App Password
+# Import credentials from config file
+try:
+    from config import EMAIL, PASSWORD, LOCK_NAME
+except ImportError:
+    EMAIL = "your@email.com"  # Your Utec app username/email
+    PASSWORD = "your_password"  # Your Utec App Password
+    LOCK_NAME = "UL3-2ND"  # Replace with your lock name
 
 bleak_scanner = BleakScanner()
 
@@ -48,4 +53,4 @@ async def check_lock_status(lockname: str):
         await bleak_scanner.stop()
 
 if __name__ == "__main__":
-    asyncio.run(check_lock_status("UL3-2ND"))  # Replace with actual lock name
+    asyncio.run(check_lock_status(LOCK_NAME))

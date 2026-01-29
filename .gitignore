@@ -8,3 +8,7 @@ dist
 .vscode
 utecio/testint.py
 build
+
+# Credentials - never commit these!
+config.py
+*.log

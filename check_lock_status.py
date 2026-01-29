@@ -25,7 +25,7 @@ async def async_bledevice_callback(address: str) -> BLEDevice:
 
 async def check_lock_status(lockname: str):
     # enable debug output
-    liblogger.setLevel(10)
+    liblogger.logger.setLevel(10)
     # connect to webapi and retrieve locks
     client = UtecClient(EMAIL, PASSWORD)
     ble_devices = await client.get_ble_devices()

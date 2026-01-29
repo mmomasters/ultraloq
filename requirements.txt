@@ -3,3 +3,4 @@ bleak
 pycryptodome
 aiohttp
 bleak_retry_connector
+Brotli
